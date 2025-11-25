@@ -7,7 +7,7 @@ GAME_PORT = 6010
 VERSION_GAME = b'1.101'
 
 # Имя сервера для ответа на запросы
-SERVER_NAME = b"[RU][PVE]Big Siberian MOE"
+SERVER_NAME = b"MOE"
 
 # Пути к файлам логов серверов лобби и сцен сервера
 LOG_FILES = [

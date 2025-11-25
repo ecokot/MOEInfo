@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерфейс проекта</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .info-box {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Интерфейс проекта</h1>
+        
+        <div class="info-box">
+            <h3>Информация о проекте</h3>
+            <p>Этот веб-интерфейс позволяет взаимодействовать с различными функциями проекта.</p>
+        </div>
+        
+        <div class="info-box">
+            <h3>Проверка версии игры</h3>
+            <button onclick="checkGameVersion()">Проверить версию</button>
+            <div id="versionResult" class="status"></div>
+        </div>
+        
+        <div class="info-box">
+            <h3>Информация об игроке</h3>
+            <input type="text" id="playerName" placeholder="Введите имя игрока">
+            <button onclick="getPlayerInfo()">Получить информацию</button>
+            <div id="playerResult" class="status"></div>
+        </div>
+        
+        <div class="info-box">
+            <h3>Информация о сервере</h3>
+            <button onclick="getServerInfo()">Получить информацию о сервере</button>
+            <div id="serverResult" class="status"></div>
+        </div>
+        
+        <div class="info-box">
+            <h3>Проверка IP-адреса</h3>
+            <input type="text" id="ipAddress" placeholder="Введите IP-адрес">
+            <button onclick="checkIP()">Проверить IP</button>
+            <div id="ipResult" class="status"></div>
+        </div>
+    </div>
+
+    <script>
+        // Функция для проверки версии игры
+        function checkGameVersion() {
+            const resultDiv = document.getElementById('versionResult');
+            resultDiv.innerHTML = '<p>Проверка версии игры...</p>';
+            resultDiv.className = 'status';
+            
+            // В реальном приложении здесь будет запрос к серверу
+            setTimeout(() => {
+                resultDiv.innerHTML = '<p>Текущая версия игры: 1.19.80</p>';
+                resultDiv.className = 'status success';
+            }, 1000);
+        }
+        
+        // Функция для получения информации об игроке
+        function getPlayerInfo() {
+            const playerName = document.getElementById('playerName').value;
+            const resultDiv = document.getElementById('playerResult');
+            
+            if (!playerName) {
+                resultDiv.innerHTML = '<p>Пожалуйста, введите имя игрока</p>';
+                resultDiv.className = 'status error';
+                return;
+            }
+            
+            resultDiv.innerHTML = `<p>Получение информации об игроке: ${playerName}...</p>`;
+            resultDiv.className = 'status';
+            
+            // В реальном приложении здесь будет запрос к серверу
+            setTimeout(() => {
+                resultDiv.innerHTML = `<p>Игрок: ${playerName}</p><p>ID: 123456789</p><p>Уровень: 15</p>`;
+                resultDiv.className = 'status success';
+            }, 1500);
+        }
+        
+        // Функция для получения информации о сервере
+        function getServerInfo() {
+            const resultDiv = document.getElementById('serverResult');
+            resultDiv.innerHTML = '<p>Получение информации о сервере...</p>';
+            resultDiv.className = 'status';
+            
+            // В реальном приложении здесь будет запрос к серверу
+            setTimeout(() => {
+                resultDiv.innerHTML = '<p>Сервер: MCPE Server</p><p>Версия: 1.19.80</p><p>Игроков онлайн: 12/20</p>';
+                resultDiv.className = 'status success';
+            }, 1200);
+        }
+        
+        // Функция для проверки IP-адреса
+        function checkIP() {
+            const ipAddress = document.getElementById('ipAddress').value;
+            const resultDiv = document.getElementById('ipResult');
+            
+            if (!ipAddress) {
+                resultDiv.innerHTML = '<p>Пожалуйста, введите IP-адрес</p>';
+                resultDiv.className = 'status error';
+                return;
+            }
+            
+            resultDiv.innerHTML = `<p>Проверка IP-адреса: ${ipAddress}...</p>`;
+            resultDiv.className = 'status';
+            
+            // В реальном приложении здесь будет запрос к серверу
+            setTimeout(() => {
+                resultDiv.innerHTML = `<p>IP-адрес: ${ipAddress}</p><p>Статус: Разрешен</p>`;
+                resultDiv.className = 'status success';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
